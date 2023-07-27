@@ -1,9 +1,13 @@
-import pytest
-import uuid
 import pickle
+import uuid
 
+import chromedriver_autoinstaller
+import pytest
 from selenium import webdriver
+
 from pages.auth_page import AuthPage
+
+chromedriver_autoinstaller.install()
 
 
 @pytest.fixture
@@ -12,8 +16,8 @@ def add_cookies_to_file():
     browser.set_window_size(1400, 1000)
 
     page = AuthPage(browser)
-    page.email.send_keys('<your_email>')
-    page.password.send_keys("<your_password>")
+    page.email.send_keys('delich@gmail.com')
+    page.password.send_keys("12345")
     page.btn.click()
 
     # Save cookies of the browser after the login
